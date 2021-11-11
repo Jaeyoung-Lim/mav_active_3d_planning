@@ -33,7 +33,7 @@
 
 #include "oaisys_client_ros/oaisys_client.h"
 
-OaisysClient::OaisysClient() {}
+OaisysClient::OaisysClient(std::shared_ptr<Channel> channel) : : stub_(Greeter::NewStub(channel)) {}
 
 OaisysClient::~OaisysClient(){};
 

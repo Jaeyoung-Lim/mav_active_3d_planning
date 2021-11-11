@@ -39,16 +39,29 @@
 
 #ifndef OAISYS_CLIENT_H
 #define OAISYS_CLIENT_H
+
+#include <iostream>
+#include <memory>
+#include <string>
+
 #include <grpcpp/grpcpp.h>
+
+#include "helloworld.grpc.pb.h"
+
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::Status;
 
 class OaisysClient {
  public:
-  OaisysClient();
+  OaisysClient(std::shared_ptr<Channel> channel);
   virtual ~OaisysClient();
 //   void setViewPose(const Eigen::Vector3d &position, const Eigen::Vector4d &quaternion);
 //   void setRenderImage();
 
  private:
+   std::unique_ptr<Greeter::Stub> stub_;
+
 };
 
 #endif
